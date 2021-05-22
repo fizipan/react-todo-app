@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Header from 'components/Header';
+import Tasks from 'elements/Tasks';
 
 function App() {
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      name: 'Learn Laravel 8',
+      day: '1 Juni 2021 6:00 PM',
+      reminder: true,
+    },
+    {
+      id: 2,
+      name: 'Learn React JS',
+      day: '20 Juni 2021 8:00 PM',
+      reminder: false,
+    },
+    {
+      id: 3,
+      name: 'Learn Vue JS 3',
+      day: '6 July 2021 10:00 PM',
+      reminder: false,
+    },
+  ]);
+
+  // Delete Task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <Tasks tasks={tasks} onDelete={deleteTask} />
     </div>
   );
 }
