@@ -28,11 +28,11 @@ const AddTask = ({ onAdd }) => {
       <form className="add-form" onSubmit={onSubmit}>
         <div className="form-control">
           <label htmlFor="task">Task</label>
-          <input type="text" id="task" value={text} onChange={(e) => setText(e.target.value)} placeholder="Add Task" autoComplete="off" autoFocus />
+          <input type="text" id="task" value={text ? text : ''} onChange={(e) => setText(e.target.value)} placeholder="Add Task" autoComplete="off" autoFocus />
         </div>
         <div className="form-control">
           <label htmlFor="day">Day & Time</label>
-          <input type="text" id="day" value={day} onChange={(e) => setDay(e.target.value)} placeholder="Add Day & Time" autoComplete="off" />
+          <input type="text" id="day" value={day ? day : ''} onChange={(e) => setDay(e.target.value)} placeholder="Add Day & Time" autoComplete="off" />
         </div>
         <div className="form-control-check">
           <label htmlFor="reminder">Set Reminder</label>

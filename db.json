@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Learn Laravel 8",
+      "day": "1 Juni 2021 6:00 PM",
+      "reminder": true
+    },
+    {
+      "id": 2,
+      "text": "Learn React JS",
+      "day": "20 Juni 2021 8:00 PM",
+      "reminder": false
+    },
+    {
+      "text": "hh",
+      "day": "hhh",
+      "reminder": false,
+      "id": 3
+    }
+  ]
+}
