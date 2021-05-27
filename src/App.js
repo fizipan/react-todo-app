@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Header from 'components/Header';
+import Footer from 'components/Footer';
 import Tasks from 'elements/Tasks';
 import AddTask from 'elements/AddTask';
+import About from 'views/About';
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false);
@@ -44,10 +47,6 @@ function App() {
     const data = await res.json();
 
     setTasks([...tasks, data]);
-
-    // const id = Math.floor(Math.random() * 10000) + 1;
-    // const newTask = { id, ...task };
-    // setTasks([...tasks, newTask]);
   };
 
   // Delete Task
@@ -78,11 +77,17 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <Header onAddShow={() => setShowAddTask(!showAddTask)} showAddTask={showAddTask} />
-      {showAddTask && <AddTask onAdd={addTask} />}
-      <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <Header onAddShow={() => setShowAddTask(!showAddTask)} showAddTask={showAddTask} />
+        <Route path="/" exact>
+          {showAddTask && <AddTask onAdd={addTask} />}
+          <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+        </Route>
+        <Route path="/about" component={About} />
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
